@@ -108,7 +108,10 @@ for (let i = 0; i < finances.length; i++) {
 console.log("Total:" + ' ' + "$" + sumTotal)
 
 
-// 
+// This loop will go through the array.length but only up to the second to last element since in the averageMean the first
+// finances starts one element ahead of the next finances increment where they will compare the difference between eachother.
+// After the loop it calculates the average change by dividing the sum of averageMean but finances.length will minus FIRST before
+// the division.
 
 
 let averageMean = 0;
@@ -121,6 +124,10 @@ const average = averageMean / (finances.length - 1);
 
 console.log("Average change:" + ' ' + average);
 
+
+// The code below is similar to the code above but in this case this loop will start by finding the maxProfits by
+// taking the difference and comparing then storing the highest number, this is the same case for the lowest number
+// but now it is just reversed, profitMonth stores the corresponding month with the Max and Min numbers.
 
 
 let maxProfits = 0; 
