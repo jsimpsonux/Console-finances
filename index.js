@@ -87,31 +87,10 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-// Code below: sumMonths will store the total amount of months,
-// the for loop will start to increment through each element in the array because the length of the array is greater than the value that is store in i,
-// firstColumn stores the increments of the finances array but it will access the first column of elements because [0] is used,
-// sumMonths that has 0 stored into it will be added to firstColumn which stores all the second column elements,
-// the console will then print "Total months" followed by sumMonths which stores the number of months in total.
+// console.log the entire length of the finances array, the console will count each row of the array and give us
+// the total number of months.
 
-let sumMonths = 0;
-
-for (let i = 0; i < finances.length; i++) {
-  var firstColumn = finances[i][0].length;
-
-  sumMonths += firstColumn;
-}
-
-console.log("Total months:" + sumMonths)
-
-// var sumMonths = 0;
-
-// finances.forEach((column) => {
-//   column.forEach((element) => {
-//     sumMonths += element[0];
-//   });
-// });
-
-// console.log("Total months:" + sumMonths)
+console.log("Total months:" + finances.length)
 
 
 // sumTotal stores 0 as a base value and will store the calculated result at the end,
@@ -122,7 +101,6 @@ console.log("Total months:" + sumMonths)
 let sumTotal = 0;
 
 for (let i = 0; i < finances.length; i++) {
-  // var secondColumn =+ finances[i][1].length;
 
   sumTotal += finances[i][1];
 }
@@ -130,17 +108,40 @@ for (let i = 0; i < finances.length; i++) {
 console.log("Total:" + ' ' + "$" + sumTotal)
 
 
+// 
 
 
 let averageMean = 0;
 
-for (let i = 0; i < finances.length; i++) {
-  averageMean += finances[i][1];
-}
+for (let i = 0; i < finances.length -1; i++) {
+  averageMean += finances[i+ 1][1] - finances[i][1];
+} 
 
-const average = averageMean / finances.length;
+const average = averageMean / (finances.length - 1);
 
 console.log("Average change:" + ' ' + average);
 
-// console.log(averageMean / finances.length - 1)
 
+
+let maxProfits = 0; 
+let profitMonth;
+let minProfits = 0;
+
+for (let i = 0; i < finances.length - 1; i++) {
+
+  let difference = finances[i + 1][1] - finances[i][1];
+
+	if (difference > maxProfits) { 
+    maxProfits = difference; 
+    profitMonth = finances[i+1][0]
+  }
+
+  if (difference < minProfits) { 
+    minProfits = difference; 
+    profitMonth = finances[i+1][0]
+  }
+
+}
+
+console.log("Greatest Increase in Profits/Losses: " + "$" + maxProfits, profitMonth);
+console.log("Greatest Decrease in Profits/Losses: " + "$" + minProfits, profitMonth);
